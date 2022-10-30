@@ -21,6 +21,19 @@ It is also possible to get the number of arguments that was passed
 into a script using::
 
     args.length
+    
+When using ns2, the main function takes as input the game's ns object
+containing the argument array you are trying to pass into the script,
+so the arguments can be referenced from it like this::
+
+    export async function main(ns) {
+	    if (ns.args[0]){ 
+		    while (true){
+			    await ns.hack(ns.args[0]);
+		    }
+	    }
+	    else{ns.print("No target given")}
+    }
 
 **WARNING: Do not try to modify the args array. This will break the game.**
 
